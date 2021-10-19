@@ -121,7 +121,7 @@ if df.empty:
 else:
 
     st.write("Clique nos itens para expandir")
-    with st.beta_expander("Distribuição dos chamados:"):
+    with st.beta_expander("Distribuição dos chamados:", expanded=True):
         # Métricas dos chamados
         # metric(label="Temperature", value="70 °F")
         metric_row(
@@ -188,7 +188,7 @@ else:
     defaultcols = ["Ticket", "Empresa", "Assunto", "Status", "Categoria", "Data"]
 
     # Exibir o dataframe dos chamados
-    with st.beta_expander("Descrição dos chamados:"):
+    with st.beta_expander("Descrição dos chamados:", expanded=True):
         texto = st.text_input("Pesquisar por assunto: ")
         filtro = df.Assunto.str.contains(texto, case=False, regex=False)
         df = df.loc[filtro]
@@ -243,9 +243,9 @@ else:
         )
         # st.write(origem_chart)
 
-        # st.subheader("Chamados por dia")
+        # st.subheader("Chamados por Mes")
         qtde_dia_chart = alt.Chart(df).mark_bar().encode(
-            alt.X("Data", bin=False, title="Data"),
+            alt.X("MesNome", bin=False, title="Mês",  sort=alt.SortField("order", order="descending")),
             alt.Y("count()", title="Contagem de Chamados")
         ).properties(
             width=900,
@@ -260,8 +260,8 @@ else:
 
         # st.subheader("Chamados por empresa")
         empresa_chart = alt.Chart(df).mark_bar().encode(
-            alt.Y("Empresa", bin=False, title="Empresa", sort=alt.SortField("order", order="descending")),
-            alt.X("count()", title="Contagem de Chamados")
+            alt.Y("Empresa", bin=False, title="Empresa"),
+            alt.X("count()", title="Contagem de Chamados", sort=alt.SortField("order", order="descending"))
         ).properties(
             # width=700,
             height=300
@@ -275,8 +275,8 @@ else:
 
         # st.subheader("Chamados por Responsável")
         resp_chart = alt.Chart(df).mark_bar().encode(
-            alt.Y("Responsavel", bin=False, title="Responsavel", sort=alt.SortField("order", order="descending")),
-            alt.X("count()", title="Contagem de Chamados")
+            alt.Y("Responsavel", bin=False, title="Responsavel"),
+            alt.X("count()", title="Contagem de Chamados", sort=alt.SortField("order", order="descending"))
         ).properties(
             # width=700,
             height=300
@@ -326,7 +326,7 @@ else:
             st.write(empresa_chart)
 
         # Este gráfico fica de fora da divisão das colunas
-        st.subheader("Chamados por dia")
+        st.subheader("Chamados por Mês")
         st.write(qtde_dia_chart)
 
     # Fim da Página Principal

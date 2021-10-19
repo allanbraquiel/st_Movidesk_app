@@ -77,12 +77,26 @@ def etl():
             return "SEBRAE - CE"
         elif "SEBRAE - PE" in str(item):
             return "SEBRAE - PE"
+        elif "SEBRAE - TO" in str(item):
+            return "SEBRAE - TO"
+        elif "SEBRAE - AC" in str(item):
+            return  "SEBRAE - AC"
         elif "SANEAGO" in str(item):
             return "SANEAGO"
         elif "FIETO" in str(item):
             return "FIETO"
         elif "SERPRO" in str(item):
             return "SERPRO"
+        elif "RORAIMA ENERGIA" in str(item):
+            return "RORAIMA ENERGIA"
+        elif "REDEMOB" in str(item):
+            return "REDEMOD"
+        elif "EQUATORIAL PIAUI" in str(item):
+            return "EQUATORIAL PIAUI"
+        elif "ELETROBRAS - RONDONIA" in str(item):
+            return "ELETROBRAS - RONDONIA"
+        elif "ELETROBRAS - ACRE" in str(item):
+            return "ELETROBRAS - ACRE"
 
         else:
             return "Sem empresa"
