@@ -32,7 +32,7 @@ df = load_data()
 
 
 # título
-st.title("Bem vindo ao Relatório de Chamados de Movidesk!!!")
+st.title("Bem vindo ao Relatório de Chamados do Movidesk!!!")
 
 # subtítulo
 st.subheader("Pare analisar os dados mais recentes, clique no botão abaixo:")
@@ -46,9 +46,9 @@ st.sidebar.subheader("Filtros")
 # mapeando dados do usuário para cada atributo
 
 empresa = st.sidebar.selectbox("Empresa", ("Tudo", "ABDI", "CNSESI", "CREA - RJ", "DATAEASY", "ELET. - AMAZONAS",
-                                           "EMGETIS", "FIETO", "MÚTUA", "SANEAGO", "SEBRAE - BA", "SEBRAE - CE",
-                                           "SEBRAE - MS", "SEBRAE - PE", "SERPRO", "PGE - SP", "PREF. DE SÃO LUÍS",
-                                           "PREVCOM", "TCE - MS", "VERT"))
+                                           "EMGETIS", "FIETO", "IT2B", "MÚTUA", "SANEAGO", "SEBRAE - AC", "SEBRAE - BA",
+                                           "SEBRAE - CE", "SEBRAE - MS", "SEBRAE - PE", "SEBRAE - TO", "SERPRO",
+                                           "PGE - SP", "PREF. DE SÃO LUÍS", "PREVCOM", "TCE - MS", "VERT"))
 
 status = st.sidebar.selectbox("Status", ("Tudo", "Aguardando", "Cancelado", "Em atendimento", "Fechado", "Resolvido"))
 

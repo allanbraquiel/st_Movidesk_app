@@ -97,6 +97,8 @@ def etl():
             return "ELETROBRAS - RONDONIA"
         elif "ELETROBRAS - ACRE" in str(item):
             return "ELETROBRAS - ACRE"
+        elif "IT2B" in str(item):
+            return "IT2B"
 
         else:
             return "Sem empresa"
