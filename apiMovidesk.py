@@ -29,16 +29,28 @@ def etl():
             "subject,origin,actionCount,createdDate,createdBy,clients,category,urgency,lastActionDate,closedIn,"
             "status,justification,&$expand=owner($select=businessName),createdBy($select=businessName),"
             "clients($select=organization;$expand=organization($select=businessName))&$filter=createdDate gt "
-            "2021-01-01T00:00:00.00z "
+            "2021-01-01T00:00:00.00z&$top=992"
         )
         return resposta_2021.json()
+
+    # Registros de 2022
+    def request_movidesk22():
+        resposta_2022 = requests.get(
+            "https://api.movidesk.com/public/v1/tickets?token=a0ea48b9-a491-4e9e-97e1-dfb7ffdc3fcc&$select=id,type,"
+            "subject,origin,actionCount,createdDate,createdBy,clients,category,urgency,lastActionDate,closedIn,"
+            "status,justification,&$expand=owner($select=businessName),createdBy($select=businessName),"
+            "clients($select=organization;$expand=organization($select=businessName))&$filter=createdDate gt "
+            "2021-11-29T00:00:00.00z "
+        )
+        return resposta_2022.json()
 
     # Usando o json_normalize (esta função entra dentro da estrutura do json)
     df20 = json_normalize(request_movidesk20())
     df21 = json_normalize(request_movidesk21())
+    df22 = json_normalize(request_movidesk22())
 
     # Unificnado os arquivos
-    df = pd.concat([df20, df21])
+    df = pd.concat([df20, df21, df22])
 
     # Mesmo após usar o json normalize a coluna "clients" não não foi carregada corretamente,
     # então vamos usar uma função para criar uma nova
