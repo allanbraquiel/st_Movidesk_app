@@ -39,8 +39,10 @@ st.subheader("Pare analisar os dados mais recentes, clique no botão abaixo:")
 btn_reload = st.button("Atualizar")
 
 
-# Menu Lateral
+# Imagem
+st.sidebar.image('images/logo-de-grande.png', use_column_width=True)
 
+# Menu Lateral
 st.sidebar.subheader("Filtros")
 
 # mapeando dados do usuário para cada atributo
