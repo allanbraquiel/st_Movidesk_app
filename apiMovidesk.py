@@ -92,7 +92,7 @@ def etl():
         elif "SEBRAE - TO" in str(item):
             return "SEBRAE - TO"
         elif "SEBRAE - AC" in str(item):
-            return  "SEBRAE - AC"
+            return "SEBRAE - AC"
         elif "SANEAGO" in str(item):
             return "SANEAGO"
         elif "FIETO" in str(item):
