@@ -11,7 +11,8 @@ from pesquisaSatisfacao import df_satis
 from acoesChamados import consulta_acoes
 from io import StringIO
 from streamlit_metrics import metric, metric_row
-# import sweetviz as sv
+import streamlit.components.v1 as components
+import sweetviz as sv
 
 st.set_page_config(
     page_title="Chamados Movidesk",
@@ -46,7 +47,6 @@ st.sidebar.image('images/logo-de-grande.png', use_column_width=True)
 st.sidebar.subheader("Filtros")
 
 # mapeando dados do usuário para cada atributo
-
 empresa = st.sidebar.selectbox("Empresa", ("Tudo", "ABDI", "CNSESI", "CREA - RJ", "DATAEASY", "ELET. - AMAZONAS",
                                            "EMGETIS", "FIETO", "IT2B", "MÚTUA", "SANEAGO", "SEBRAE - AC", "SEBRAE - BA",
                                            "SEBRAE - CE", "SEBRAE - MS", "SEBRAE - PE", "SEBRAE - TO", "SERPRO",
@@ -115,17 +115,13 @@ df['DataFechamento'] = df['DataFechamento'].dt.strftime("%d-%m-%Y")
 df['DataUltimaAcao'] = df['DataUltimaAcao'].dt.strftime("%d-%m-%Y")
 
 if df.empty:
-
     st.subheader("Não há dados a serem apresentados com os filtros utilizados. :cry:")
     st.write("Selecione outros filtros no menu lateral. :rewind:")
 
-
 else:
-
     st.write("Clique nos itens para expandir")
     with st.beta_expander("Distribuição dos chamados:", expanded=True):
         # Métricas dos chamados
-        # metric(label="Temperature", value="70 °F")
         metric_row(
             {
                 "Total de chamados": df.Empresa.count(),
@@ -334,7 +330,6 @@ else:
     # Fim da Página Principal
 
     # Análise Estatística
-
     with st.beta_expander("Análise Estatística dos Chamados:"):
 
         # divide em 3 colunas
@@ -441,15 +436,21 @@ def create_download_link_excel(df, title="Download do relatório em Excel", file
 if btn_relatorio:
     st.sidebar.markdown(get_table_download_link(df), unsafe_allow_html=True)
     st.sidebar.markdown(create_download_link_excel(df), unsafe_allow_html=True)
-    # my_report = sv.analyze(df)
-    # my_report.show_html()
+    my_report = sv.analyze(df)
+    my_report.show_html("files/Movidesk.html")
+
+    components.html("files/Movidesk.html")
+    # como criar um componente: https://docs.streamlit.io/library/components/create
+    # https://streamlit.io/components
+    # https://www.youtube.com/channel/UC3LD42rjj-Owtxsa6PwGU5Q
+
+    st.components.v1.iframe()
+
 
 
 if btn_reload:
     apiMovidesk.etl()
     caching.clear_cache()
-
-
 
 
 
