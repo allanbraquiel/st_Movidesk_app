@@ -50,7 +50,8 @@ st.sidebar.subheader("Filtros")
 empresa = st.sidebar.selectbox("Empresa", ("Tudo", "ABDI", "CNSESI", "CREA - RJ", "DATAEASY", "ELET. - AMAZONAS",
                                            "EMGETIS", "FIETO", "IT2B", "MÚTUA", "SANEAGO", "SEBRAE - AC", "SEBRAE - BA",
                                            "SEBRAE - CE", "SEBRAE - MS", "SEBRAE - PE", "SEBRAE - TO", "SERPRO",
-                                           "PGE - SP", "PREF. DE SÃO LUÍS", "PREVCOM", "TCE - MS", "VERT"))
+                                           "PGE - SP", "PREF. DE SÃO LUÍS", "PREVCOM", "TCE - MS", "VERT",
+                                           "WIZ SOLUCOES"))
 
 status = st.sidebar.selectbox("Status", ("Tudo", "Aguardando", "Cancelado", "Em atendimento", "Fechado", "Resolvido"))
 
