@@ -9,6 +9,7 @@ backports.entry-points-selectable==1.1.0
 base58==2.1.0
 bleach==3.3.0
 blinker==1.4
+bokeh==2.4.1
 cachetools==4.2.2
 certifi==2020.6.20
 cffi==1.14.5
@@ -61,6 +62,7 @@ pickleshare==0.7.5
 Pillow==8.2.0
 pipenv==2020.8.13
 platformdirs==2.2.0
+plotly==5.5.0
 prometheus-client==0.11.0
 prompt-toolkit==3.0.18
 protobuf==3.17.3
@@ -70,10 +72,13 @@ pycosat==0.6.3
 pycparser==2.20
 pydeck==0.6.2
 Pygments==2.9.0
+Pympler==1.0.1
 pyparsing==2.4.7
 pyrsistent==0.17.3
 python-dateutil==2.8.1
 pytz==2021.1
+pytz-deprecation-shim==0.1.0.post0
+PyYAML==6.0
 pyzmq==22.1.0
 requests==2.24.0
 ruamel.yaml==0.16.12
@@ -87,6 +92,7 @@ smmap==4.0.0
 streamlit==0.84.0
 streamlit-metrics==0.1.0
 sweetviz==2.1.2
+tenacity==8.0.1
 terminado==0.10.1
 testpath==0.5.0
 threadpoolctl==2.2.0
@@ -95,6 +101,8 @@ toolz==0.11.1
 tornado==6.1
 tqdm==4.61.1
 traitlets==5.0.5
+typing_extensions==4.0.1
+tzdata==2021.2.post0
 tzlocal==2.1
 urllib3==1.25.10
 validators==0.18.2

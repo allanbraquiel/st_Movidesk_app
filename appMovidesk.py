@@ -15,9 +15,8 @@ import streamlit.components.v1 as components
 import sweetviz as sv
 import time
 
-import plotly.figure_factory as ff
-from bokeh.plotting import figure
-
+# import plotly.figure_factory as ff
+# from bokeh.plotting import figure
 
 
 st.set_page_config(
