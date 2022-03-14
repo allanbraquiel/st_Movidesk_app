@@ -13,6 +13,12 @@ from io import StringIO
 from streamlit_metrics import metric, metric_row
 import streamlit.components.v1 as components
 import sweetviz as sv
+import time
+
+import plotly.figure_factory as ff
+from bokeh.plotting import figure
+
+
 
 st.set_page_config(
     page_title="Chamados Movidesk",
@@ -40,6 +46,26 @@ st.subheader("Pare analisar os dados mais recentes, clique no botão abaixo:")
 btn_reload = st.button("Atualizar")
 
 
+##################################################
+
+# https://docs.streamlit.io/library/api-reference/
+
+##################################################
+
+# Barra de progresso
+# my_bar = st.progress(0)
+#for percent_complete in range(100):
+#     time.sleep(0.1)
+#     my_bar.progress(percent_complete + 1)
+
+#with st.spinner('Atualizando os dados...'):
+#    time.sleep(15)
+#st.success('Dados atualizados!')
+
+
+####################################
+
+
 # Imagem
 st.sidebar.image('images/logo-de-grande.png', use_column_width=True)
 
@@ -47,11 +73,11 @@ st.sidebar.image('images/logo-de-grande.png', use_column_width=True)
 st.sidebar.subheader("Filtros")
 
 # mapeando dados do usuário para cada atributo
-empresa = st.sidebar.selectbox("Empresa", ("Tudo", "ABDI", "CNSESI", "CREA - RJ", "DATAEASY", "ELET. - AMAZONAS",
-                                           "EMGETIS", "FIETO", "IT2B", "MÚTUA", "SANEAGO", "SEBRAE - AC", "SEBRAE - BA",
-                                           "SEBRAE - CE", "SEBRAE - MS", "SEBRAE - PE", "SEBRAE - TO", "SERPRO",
-                                           "PGE - SP", "PREF. DE SÃO LUÍS", "PREVCOM", "TCE - MS", "VERT",
-                                           "WIZ SOLUCOES"))
+empresa = st.sidebar.selectbox("Empresa", ("Tudo", "ABDI", "ARQDIGITAL", "CNSESI", "CREA - RJ", "DATAEASY",
+                                           "ELET. - AMAZONAS", "EMGETIS", "FIETO", "IT2B", "MÚTUA", "SANEAGO",
+                                           "SEBRAE - AC", "SEBRAE - BA", "SEBRAE - CE", "SEBRAE - MS", "SEBRAE - PE",
+                                           "SEBRAE - TO", "SERPRO", "PGE - SP", "PREF. DE SÃO LUÍS", "PREVCOM",
+                                           "TCE - MS", "VERT", "WIZ SOLUCOES"))
 
 status = st.sidebar.selectbox("Status", ("Tudo", "Aguardando", "Cancelado", "Em atendimento", "Fechado", "Resolvido"))
 
@@ -60,6 +86,8 @@ categoria = st.sidebar.selectbox("Categoria", ("Tudo", "Desenvolvimento", "Dúvi
 
 # tipo = st.sidebar.selectbox("Tipo", ("Tudo", "Publico", "Interno"))
 tipo = st.sidebar.radio("Selecione o Tipo:", ["Tudo", "Publico", "Interno"])
+
+
 
 today = datetime.today()
 yesterday = today - timedelta(days=182)
@@ -116,8 +144,8 @@ df['DataFechamento'] = df['DataFechamento'].dt.strftime("%d-%m-%Y")
 df['DataUltimaAcao'] = df['DataUltimaAcao'].dt.strftime("%d-%m-%Y")
 
 if df.empty:
-    st.subheader("Não há dados a serem apresentados com os filtros utilizados. :cry:")
-    st.write("Selecione outros filtros no menu lateral. :rewind:")
+    st.error("Não há dados a serem apresentados com os filtros utilizados. :cry:")
+    st.warning("Selecione outros filtros no menu lateral. :rewind:")
 
 else:
     st.write("Clique nos itens para expandir")
@@ -455,6 +483,27 @@ if btn_reload:
 
 
 
+
+## Testes de Gráficos
+# hist = df.Empresa.value_counts()
+
+# st.subheader("Quantidade de chamados por empresa:")
+# st.bar_chart(hist)
+
+# Grafico de linhas por mes
+# df["data_format"] = pd.to_datetime(df['Data'], format='%d-%m-%Y')
+# df["data_format2"] = df["data_format"].dt.strftime("%Y-%m")
+
+
+# chamados_mes = df.groupby("data_format2")["Empresa"].count()
+# st.subheader("Quantidade de chamados por mês:")
+# st.line_chart(chamados_mes)
+
+
+# Grafico de linhas por dia
+# st.subheader("Quantidade de chamados por dia:")
+# chamados_dia = df.groupby("Data")["Empresa"].count()
+# st.line_chart(chamados_dia)
 
 
 

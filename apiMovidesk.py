@@ -113,6 +113,12 @@ def etl():
             return "IT2B"
         elif "WIZ SOLUCOES" in str(item):
             return "WIZ SOLUCOES"
+        elif "EQUATORIAL PIAUI" in str(item):
+            return "EQUATORIAL PIAUI"
+        elif "ELETROBRAS - RONDONIA" in str(item):
+            return "ELETROBRAS - RONDONIA"
+        elif "ARQDIGITAL" in str(item):
+            return "ARQDIGITAL"
 
         else:
             return "Sem empresa"
